@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'componentes/slider.html' %}
+    <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">Audio/Videos &amp; Images</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li class="active">Audio/Videos &amp; Images</li>
+            </ul>
+        </div>
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+
+    <!--=== Content Part ===-->
+    <div class="container content">
+        <div class="row">
+
+            <!-- Begin Content -->
+            <div class="col-md-12">
+                <!-- Image Examples -->
+                <div class="heading heading-v1 margin-bottom-40">
+                    <h2>Image Gallery</h2>
+
+                    <p></p>
+                </div>
+
+                <div class="row margin-bottom-50">
+                    {% for g in gallery %}
+
+                        <div class="col-md-2 shadow-wrapper md-margin-bottom-40">
+                            <div class="box-shadow shadow-effect-2">
+                                {% if g.photo %}
+                                    <img class="img-responsive" src="{{ g.photo.url }}" alt="">
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- End Image Examples -->
+
+                <!-- Video Blocks -->
+                <div class="heading heading-v1 margin-bottom-40">
+                    <h2>Video &amp; Youtube Videos</h2>
+
+                    <p></p>
+                </div>
+                <div class="row margin-bottom-60">
+                    <!-- Vimeo Video -->
+                    {% for v in gallery %}
+                        <div class="col-md-6">
+                            {% if v.video %}
+                                <div class="responsive-video md-margin-bottom-40">
+
+                                    <iframe width="100%" src="{{ v.video.url }}" frameborder="0"
+                                            allowfullscreen></iframe>
+
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    <!-- End Vimeo Video -->
+                </div>
+                <!-- End Video Blocks -->
+
+            </div>
+            <!-- End Content -->
+        </div>
+    </div><!--/container-->
+
+{% endblock %}
