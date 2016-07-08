@@ -1,6 +1,7 @@
   {% load static from staticfiles %}
+  {% load thumbnail %}
    <div class="slider-inner">
-        <div id="da-slider" class="da-slider" style="background:transparent url({{ slider.image.url }}) repeat 0% 0%;">
+        <div id="da-slider" class="da-slider" style="background:transparent url({{ slider.image|thumbnail_url:'slider' }}) repeat 0% 0%;">
             <div class="da-slide">
                 <h2><i>COLOR CHANGE</i> <br/> <i>STARTING AT $999</i></h2>
 

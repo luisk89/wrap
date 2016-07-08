@@ -1,10 +1,11 @@
 {% load static from staticfiles %}
+{% load thumbnail %}
 <nav class="one-page-header navbar navbar-default navbar-fixed-top one-page-nav-scrolling one-page-nav__fixed" data-role="navigation">
 		<div class="container">
 			<div class="menu-container page-scroll">
 
 				<a class="navbar-brand " href="/">
-					<img src="{{ contacto.logo.url }}">
+					<img src="{{ contacto.logo|thumbnail_url:'logo' }}" alt="">
 				</a>
 			</div>
 
@@ -16,14 +17,14 @@
 							<a href="/"><span data-hover="Home">Home</span></a>
 						</li>
 						<li class="page-scroll">
-							<a href="/#Services"><span data-hover="Services">Services</span></a>
+							<a href="/services"><span data-hover="Services">Services</span></a>
 						</li>
 						<li class="page-scroll">
 							<a href="{% url 'gallery' %}"><span data-hover="Gallery">Gallery</span></a>
                         </li>
 
 						<li class="page-scroll">
-							<a href="/#Contact"><span data-hover="Contact us">Contact us</span></a>
+							<a href="/contact"><span data-hover="Contact us">Contact us</span></a>
 						</li>
 					</ul>
 				</div>

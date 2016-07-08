@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
-
+{% load thumbnail %}
 {% block content %}
     <!--=== Slider ===-->
     {% include 'componentes/slider.html' %}
@@ -29,7 +29,7 @@
                                 {% else %}
                                     <div class="item">
                                 {% endif %}
-                            <img alt="" src='{{ it.photo.url }}'>
+                            <img alt="" src='{{ it.photo|thumbnail_url:'item'}}'>
                             </div>
                             {% endfor %}
                             </div>
@@ -71,9 +71,7 @@
 
             <!-- End Easy Blocks v2 -->
         </div>
-        <!-- End Content Part -->
-        {#    contact#}
-        {% include 'contact.html' %}
+    </div>
 
         {#    partners#}
         {% include 'componentes/partners.html' %}

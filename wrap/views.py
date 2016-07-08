@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
 from content.models import contact, slider, Service, Inbox
+from multimedia.models import partner
 from wrap.forms import formulario
 from django.contrib import messages
 
@@ -18,8 +19,7 @@ class Index (TemplateView):
         context['contacto'] = contact.objects.first()
         context['slider'] = slider.objects.first()
         context['services']=Service.objects.all()
-        context['form']=formulario
-        print(Service.objects.get(id=1).item_set.get(id=1))
+        context['partners']=partner.objects.all()
         return context
 
     def enviar_form_ajax(request):
@@ -43,7 +43,7 @@ class Index (TemplateView):
             return redirect('/')
 
 class Contact (FormView):
-    template_name = 'index.html'
+    template_name = 'contact.html'
     form_class = formulario
     success_url = reverse_lazy('contactform')
 
@@ -57,4 +57,5 @@ class Contact (FormView):
         context = super(Contact, self).get_context_data(**kwargs)
         context['contacto'] = contact.objects.first()
         context['slider'] = slider.objects.first()
+        context['partners']=partner.objects.all()
         return context

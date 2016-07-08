@@ -1,8 +1,21 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 {% block content %}
+
     <div class="bg-color-light">
         <div class="container content-sm">
+    <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+            <h1 class="pull-left">{{ service.name }}</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="/services/">Services</a></li>
+                <li class="active">{{ service.name }}</li>
+            </ul>
+
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+
             <!-- Blog Posts -->
             <div class="news-v3 bg-color-white margin-bottom-60">
                 {% for s in service.servicecontent_set.all %}
@@ -16,6 +29,9 @@
                     <p>{{ s.texto }}</p>
                 {% endfor %}
                 {% if service.pricing_set.exists %}
+                    <div class="clearfix margin-bottom-20">
+                        <hr>
+                    </div>
                     <div class="heading heading-v1 margin-bottom-20">
                         <h2>FULL WRAPS</h2>
 

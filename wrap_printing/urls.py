@@ -32,9 +32,10 @@ urlpatterns = [
     url(r'^gallery/',Gallery.as_view(), name="gallery"),
     #url(r'^enviarform/',Index.enviar_form_ajax, name="contact"),
 
-    url(r'^contactform/',Contact.as_view(), name="contactform"),
+    url(r'^contact/',Contact.as_view(), name="contactform"),
 
-    url(r'^service/(?P<pk>\S+)$', views.ServicesDetail.as_view(), name="services"),
+    url(r'^service/(?P<pk>\S+)$', views.ServicesDetail.as_view(), name="service-single"),
+    url(r'^services/', views.Services.as_view(), name="services"),
 ]
 
 if getattr(settings, "DEBUG", False):

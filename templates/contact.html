@@ -1,13 +1,23 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block content %}
+{% include 'componentes/slider.html' %}
+        <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">Contact us</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li class="active">Contact us</li>
+            </ul>
+        </div>
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
 <div class="g-section-bg-gray text-center g-pt-60 g-pb-70 g-heading-v7" id="Contact">
     <div class="container">
         <h3>Have A Questions?</h3>
 
-        <div class="row g-mb-40">
-            <div class="col-sm-8 col-sm-offset-2">
-                Sed eget aliquet nisl. Proin laoreet accumsan nisl non vestibulum.
-            </div>
-        </div>
-        <form action="/contactform/" class="sky-form" method="post" id="sky-form3" novalidate="novalidate">{% csrf_token %}
+        <form action="/contact/" class="sky-form" method="post" id="sky-form3" novalidate="novalidate">{% csrf_token %}
             <fieldset>
                 <div class="row">
                     <div class="col-sm-6 g-mb-25">
@@ -57,3 +67,8 @@
         </form>
     </div>
 </div>
+            <!-- GMaps -->
+    <div class="GMap-stand-alone" id="map"></div>
+    <!-- END GMaps -->
+
+{% endblock %}

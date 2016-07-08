@@ -10,14 +10,14 @@ from django.db import models
 
 class slider(models.Model):
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='Photo', blank=False)
+    image = models.ImageField(upload_to='Photo/slider', blank=False)
 
     def __unicode__(self):
         return self.title
 
 
 class contact(models.Model):
-    logo = models.ImageField(upload_to='Photo', blank=False)
+    logo = models.ImageField(upload_to='Photo/logo', blank=False)
     phone_number = models.CharField(blank=True, max_length=15)
     mail_contact = models.EmailField(max_length=70, blank=True)
     fax = models.CharField(blank=True, max_length=20)
@@ -49,7 +49,7 @@ class Inbox(models.Model):
 
 class Service(models.Model):
     tipo = models.CharField(blank=True, max_length=15)
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=250)
     resumen = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -63,13 +63,13 @@ class Service(models.Model):
 class ServiceContent(models.Model):
     name = models.CharField(max_length=200)
     texto = models.TextField(blank=True)
-    foto_portada = models.ImageField(upload_to='Photo', blank=False)
+    foto_portada = models.ImageField(upload_to='Photo/service', blank=False)
     service = models.ForeignKey(Service)
 
 
 class item(models.Model):
     name = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to='Photo', blank=False)
+    photo = models.ImageField(upload_to='Photo/item', blank=False)
     service = models.ForeignKey(Service)
     created_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(

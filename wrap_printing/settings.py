@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'meta',
     'content',
     'multimedia',
+    'easy_thumbnails'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -80,22 +81,22 @@ WSGI_APPLICATION = 'wrap_printing.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Wrap',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'Wrap',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
@@ -141,23 +142,22 @@ EMAIL_HOST_PASSWORD = 'Bigboss89'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-def ABS_DIR(rel):
-    return os.path.join(BASE_DIR, rel.replace('/', os.path.sep))
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'site_media', 'media')
-MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'site_media', 'static')
 STATIC_URL = '/static/'
 
-
-STATICFILES_DIRS = (
-    ABS_DIR('static'),
-)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'site_media', 'media')
+MEDIA_URL = '/media/'
 
-STATICFILES_FINDERS = (
-   'django.contrib.staticfiles.finders.FileSystemFinder',
-   'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-   )
+THUMBNAIL_ALIASES = {
+    '': {
+        'logo': {'size': (103, 39), 'crop': False},
+        'slider':{'size':(2046,427),'crop':False},
+        'item':{'size':(263,147),'crop':False},
+        'partner':{'size':(150,72),'crop':False},
+        'gallery':{'size':(262.5,165.91),'crop':False}
+    }
+}

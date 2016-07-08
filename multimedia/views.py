@@ -2,8 +2,9 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.views.generic.base import TemplateView
+from django.views.generic.list import ListView
 from content.models import contact, slider
-from multimedia.models import gallery
+from multimedia.models import gallery, partner
 
 
 class Gallery (TemplateView):
@@ -14,5 +15,5 @@ class Gallery (TemplateView):
         context['gallery'] = gallery.objects.published()
         context['contacto'] = contact.objects.first()
         context['slider'] = slider.objects.first()
-        print(gallery.objects.get(id=5).categoria)
         return context
+

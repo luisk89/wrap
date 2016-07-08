@@ -17,10 +17,10 @@ class categoria(models.Model):
 
 class gallery(models.Model):
     title = models.CharField(max_length=255)
-    photo = models.ImageField(upload_to = 'photo/public',null=True,blank=True)
+    photo = models.ImageField(upload_to = 'gallery/photo',null=True,blank=True)
     publish = models.BooleanField(default=True)
     categoria=models.ForeignKey(categoria,null=True,blank=True)
-    video=models.FileField(upload_to='video/public',blank=True,null=True)
+    video=models.FileField(upload_to='gallery/video',blank=True,null=True)
 
     objects = EntryQuerySet.as_manager()
 
@@ -33,3 +33,9 @@ class gallery(models.Model):
     def __unicode__(self):
         return self.title
 
+class partner(models.Model):
+    name=models.CharField(max_length=50)
+    photo=models.ImageField(upload_to='photo/partners')
+
+    def __str__(self):
+        return self.name
