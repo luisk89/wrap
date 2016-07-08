@@ -1,21 +1,20 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 {% block content %}
-
-    <div class="bg-color-light">
-        <div class="container content-sm">
+    {% include 'componentes/slider.html' %}
     <!--=== Breadcrumbs ===-->
     <div class="breadcrumbs">
-            <h1 class="pull-left">{{ service.name }}</h1>
-            <ul class="pull-right breadcrumb">
-                <li><a href="/">Home</a></li>
-                <li><a href="/services/">Services</a></li>
-                <li class="active">{{ service.name }}</li>
-            </ul>
+        <h1 class="pull-left">{{ service.name }}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/services/">Services</a></li>
+            <li class="active">{{ service.name }}</li>
+        </ul>
 
     </div><!--/breadcrumbs-->
     <!--=== End Breadcrumbs ===-->
-
+    <div class="bg-color-light">
+        <div class="container content-sm">
             <!-- Blog Posts -->
             <div class="news-v3 bg-color-white margin-bottom-60">
                 {% for s in service.servicecontent_set.all %}

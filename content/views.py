@@ -17,7 +17,7 @@ class ServicesDetail(DetailView):
 
         context = super(ServicesDetail, self).get_context_data(**kwargs)
         context['contacto'] = contact.objects.first()
-
+        context['slider'] = slider.objects.first()
         # context['Items'] = Items
         return context
 
@@ -30,7 +30,7 @@ class Services(ListView):
 
         context = super(Services, self).get_context_data(**kwargs)
         context['contacto'] = contact.objects.first()
-        context['slider']=slider.objects.first()
+        context['slider'] = slider.objects.first()
         context['partners'] = partner.objects.all()
         return context
 
